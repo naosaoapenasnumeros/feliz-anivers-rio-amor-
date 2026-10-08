@@ -1,0 +1,844 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Para você, Gabriel ❤️</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Montserrat:wght@400;600;700&display=swap');
+
+*{box-sizing:border-box}
+
+html{scroll-behavior:smooth}
+
+body{
+  margin:0;
+  background:#070711;
+  color:#fff;
+  font-family:Montserrat,sans-serif;
+  overflow-x:hidden;
+}
+
+h1,h2,h3{
+  font-family:'Cormorant Garamond',serif;
+}
+
+button{
+  font:inherit;
+}
+
+/* ESTRELAS */
+.stars{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background-image:radial-gradient(#fff 1px,transparent 1px);
+  background-size:80px 80px;
+  opacity:.18;
+  z-index:0;
+}
+
+.estrela{
+  position:absolute;
+  width:2px;
+  height:2px;
+  border-radius:50%;
+  background:#fff;
+  animation:pisca 2.5s infinite alternate;
+}
+
+@keyframes pisca{
+  to{
+    opacity:.15;
+    transform:scale(.5);
+  }
+}
+
+/* CAPA */
+.cover{
+  position:fixed;
+  inset:0;
+  z-index:10;
+  display:grid;
+  place-items:center;
+  background:radial-gradient(circle,#29204a,#070711 65%);
+  transition:1.2s;
+}
+
+.cover.out{
+  opacity:0;
+  visibility:hidden;
+}
+
+.doorwrap{
+  width:min(320px,75vw);
+  height:min(470px,70vh);
+  perspective:1000px;
+  position:relative;
+}
+
+.door{
+  position:absolute;
+  inset:0;
+  border:3px solid #ffabc9;
+  border-radius:14px 14px 4px 4px;
+  background:linear-gradient(135deg,#17172e,#070711);
+  transform-origin:left;
+  transition:1.5s cubic-bezier(.77,0,.18,1);
+  box-shadow:0 0 50px #ff5f9133;
+}
+
+.door.open{
+  transform:rotateY(-110deg);
+}
+
+.knob{
+  position:absolute;
+  right:25px;
+  top:50%;
+  width:13px;
+  height:13px;
+  border-radius:50%;
+  background:#ffdbe7;
+  box-shadow:0 0 15px #ff8fb3;
+}
+
+.covertext{
+  position:absolute;
+  z-index:2;
+  text-align:center;
+  width:min(650px,90vw);
+  top:50%;
+  transform:translateY(-50%);
+}
+
+.covertext h1{
+  font-size:clamp(3.2rem,12vw,6rem);
+  line-height:.8;
+  margin:12px 0;
+}
+
+.covertext h1 span{
+  display:block;
+  color:transparent;
+  -webkit-text-stroke:1px #fff;
+}
+
+.small{
+  font-size:.7rem;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  color:#d9d3e7;
+}
+
+.covertext p{
+  color:#c9c6d5;
+}
+
+.btn{
+  border:0;
+  border-radius:999px;
+  padding:14px 23px;
+  background:linear-gradient(90deg,#ff5f91,#bd70ff);
+  color:#fff;
+  font-weight:700;
+  cursor:pointer;
+  box-shadow:0 12px 35px #ff5f9133;
+  transition:.25s;
+}
+
+.btn:hover{
+  transform:translateY(-3px) scale(1.03);
+}
+
+/* CONTEÚDO */
+.content{
+  opacity:0;
+  transition:1s;
+  position:relative;
+  z-index:1;
+}
+
+.content.show{
+  opacity:1;
+}
+
+.hero,
+.section{
+  min-height:100vh;
+  padding:80px 18px;
+  display:grid;
+  place-items:center;
+  text-align:center;
+}
+
+.hero{
+  background:radial-gradient(circle at 50% 40%,#442852,#070711 60%);
+}
+
+.hero h1{
+  font-size:clamp(4rem,15vw,9rem);
+  line-height:.75;
+  margin:20px 0;
+}
+
+.hero h1 span{
+  color:transparent;
+  -webkit-text-stroke:1px #fff;
+}
+
+.hero p,
+.section>div>p{
+  max-width:700px;
+  margin:20px auto;
+  line-height:1.9;
+  color:#c9c6d5;
+}
+
+/* GALERIA */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:16px;
+  max-width:900px;
+  margin:35px auto;
+}
+
+.photo{
+  position:relative;
+  overflow:hidden;
+  border-radius:22px;
+  background:#151525;
+  box-shadow:0 15px 40px #0007;
+}
+
+.photo.big{
+  grid-column:span 2;
+}
+
+.photo img{
+  width:100%;
+  height:340px;
+  object-fit:cover;
+  display:block;
+  transition:.6s;
+}
+
+.photo.big img{
+  height:450px;
+}
+
+.photo:hover img{
+  transform:scale(1.05);
+}
+
+.caption{
+  position:absolute;
+  bottom:0;
+  left:0;
+  right:0;
+  padding:35px 15px 15px;
+  background:linear-gradient(transparent,#000c);
+  text-align:left;
+  font-size:.85rem;
+}
+
+/* HISTÓRIA */
+.story{
+  background:#0b0b18;
+}
+
+.memory{
+  max-width:1000px;
+  margin:55px auto;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:25px;
+  align-items:center;
+  text-align:left;
+}
+
+.memory img{
+  width:100%;
+  height:430px;
+  object-fit:cover;
+  border-radius:24px;
+  box-shadow:0 15px 45px #0007;
+}
+
+.memory:nth-child(even) img{
+  order:2;
+}
+
+.memory h3{
+  font-size:2.7rem;
+  margin:8px 0;
+}
+
+.memory p{
+  color:#c9c6d5;
+  line-height:1.9;
+}
+
+/* 18 ANOS */
+.eighteen{
+  background:radial-gradient(circle,#3a214f,#070711 68%);
+  text-align:center;
+}
+
+.num{
+  font:700 clamp(9rem,35vw,22rem)/.75 'Cormorant Garamond',serif;
+  color:transparent;
+  -webkit-text-stroke:2px #ff9fbe;
+  text-shadow:0 0 45px #ff5f9144;
+}
+
+/* CARTA */
+.letter{
+  max-width:720px;
+  background:#fff8fb;
+  color:#392d35;
+  border-radius:10px;
+  padding:35px 28px;
+  text-align:left;
+  box-shadow:0 25px 70px #0008;
+}
+
+.letter h2{
+  font-size:3rem;
+  margin-top:0;
+}
+
+.letter p{
+  line-height:2;
+}
+
+.signature{
+  font:700 2rem 'Cormorant Garamond',serif;
+  color:#b13b68;
+}
+
+/* FINAL */
+.end{
+  position:relative;
+  overflow:hidden;
+}
+
+.end h2{
+  font-size:clamp(4rem,13vw,8rem);
+  margin:10px;
+}
+
+.endpics{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  margin:30px auto;
+  max-width:900px;
+}
+
+.endpics img{
+  width:150px;
+  height:190px;
+  object-fit:cover;
+  border-radius:18px;
+  transform:rotate(-5deg);
+  box-shadow:0 15px 35px #0008;
+}
+
+.endpics img:nth-child(2){
+  transform:rotate(5deg) translateY(-12px);
+}
+
+.endpics img:nth-child(3){
+  transform:rotate(-2deg);
+}
+
+.endpics img:nth-child(4){
+  transform:rotate(4deg) translateY(10px);
+}
+
+/* CELULAR */
+@media(max-width:700px){
+
+  .grid{
+    grid-template-columns:1fr;
+  }
+
+  .photo.big{
+    grid-column:auto;
+  }
+
+  .photo img,
+  .photo.big img{
+    height:390px;
+  }
+
+  .memory{
+    grid-template-columns:1fr;
+  }
+
+  .memory:nth-child(even) img{
+    order:0;
+  }
+
+  .endpics img{
+    width:21vw;
+    height:28vw;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ESTRELAS -->
+<div class="stars"></div>
+
+<!-- CAPA COM PORTA -->
+<div class="cover" id="cover">
+
+  <div class="covertext">
+
+    <div class="small">
+      um presente só seu
+    </div>
+
+    <h1>
+      Gabriel
+      <br>
+      <span>18 anos</span>
+    </h1>
+
+    <p>
+      Tem uma coisa aqui que eu fiz especialmente para você.
+    </p>
+
+    <button class="btn" id="open">
+      🚪 ABRIR MEU PRESENTE
+    </button>
+
+  </div>
+
+  <div class="doorwrap">
+
+    <div class="door" id="door">
+      <div class="knob"></div>
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- CONTEÚDO -->
+<main class="content" id="content">
+
+  <!-- COMEÇO -->
+  <section class="hero">
+
+    <div>
+
+      <div class="small">
+        para o menino que virou meu lugar favorito
+      </div>
+
+      <h1>
+        Feliz
+        <br>
+        <span>18.</span>
+      </h1>
+
+      <p>
+        Eu poderia simplesmente te desejar feliz aniversário…
+        mas você merece muito mais do que uma frase.
+      </p>
+
+      <button class="btn" onclick="go('inicio')">
+        COMEÇAR A NOSSA HISTÓRIA ↓
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- PRIMEIRAS FOTOS -->
+  <section class="section" id="inicio">
+
+    <div>
+
+      <div class="small">
+        capítulo 01
+      </div>
+
+      <h2>
+        E pensar que tudo começou assim...
+      </h2>
+
+      <p>
+        Algumas das primeiras lembranças que eu tenho de nós são exatamente essas:
+        dois adolescentes fazendo graça, rindo de qualquer coisa e criando,
+        sem perceber, uma história que hoje significa tanto para mim.
+      </p>
+
+      <div class="grid">
+
+        <div class="photo">
+          <img src="fotos/foto01.webp">
+          <div class="caption">
+            Começando a colecionar memórias. ❤️
+          </div>
+        </div>
+
+        <div class="photo">
+          <img src="fotos/foto02.jpeg">
+          <div class="caption">
+            A gente sendo… a gente. 😂
+          </div>
+        </div>
+
+        <div class="photo big">
+          <img src="fotos/foto03.jpeg">
+          <div class="caption">
+            E aparentemente sempre tivemos talento para fazer besteira.
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- MOMENTOS ENGRAÇADOS -->
+  <section class="section story">
+
+    <div>
+
+      <div class="small">
+        capítulo 02
+      </div>
+
+      <h2>
+        Entre risadas e momentos aleatórios
+      </h2>
+
+      <div class="memory">
+
+        <img src="fotos/foto04.jpeg">
+
+        <div>
+
+          <div class="small">
+            01 — memória
+          </div>
+
+          <h3>
+            Até com máscara a gente combina.
+          </h3>
+
+          <p>
+            Se alguém falasse que essas fotos estariam em um presente
+            de 18 anos, a gente provavelmente riria.
+            E é justamente por isso que eu amo guardar essas coisas.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="memory">
+
+        <img src="fotos/foto05.webp">
+
+        <div>
+
+          <div class="small">
+            02 — memória
+          </div>
+
+          <h3>
+            Do nosso jeitinho.
+          </h3>
+
+          <p>
+            Tem momentos que não precisam ser perfeitos.
+            Só precisam ser nossos.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="memory">
+
+        <img src="fotos/foto06.jpeg">
+
+        <div>
+
+          <div class="small">
+            03 — memória
+          </div>
+
+          <h3>
+            Dois completamente normais. 🤡
+          </h3>
+
+          <p>
+            Ou talvez não.
+            Mas sinceramente? Ainda bem que não somos.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- FOTOS ROMÂNTICAS -->
+  <section class="section">
+
+    <div>
+
+      <div class="small">
+        capítulo 03
+      </div>
+
+      <h2>
+        Eu escolheria você de novo.
+      </h2>
+
+      <p>
+        Entre tantos lugares, dias e pessoas,
+        algumas memórias simplesmente ficam.
+        E quando penso nas minhas favoritas,
+        você aparece em muitas delas.
+      </p>
+
+      <div class="grid">
+
+        <div class="photo">
+          <img src="fotos/foto07.jpeg">
+          <div class="caption">
+            Nós. ❤️
+          </div>
+        </div>
+
+        <div class="photo">
+          <img src="fotos/foto08.jpeg">
+          <div class="caption">
+            Um daqueles momentos que eu guardaria para sempre.
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- 18 -->
+  <section class="section eighteen">
+
+    <div>
+
+      <div class="small">
+        e então...
+      </div>
+
+      <div class="num">
+        18
+      </div>
+
+      <h2>
+        Uma nova fase começa agora.
+      </h2>
+
+      <p>
+        Que os próximos anos tragam tudo aquilo que você sonha.
+        E que, no meio de tudo isso, a gente ainda tenha
+        muitos momentos para chamar de nossos.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- CARTA -->
+  <section class="section">
+
+    <div>
+
+      <div class="small">
+        capítulo final
+      </div>
+
+      <div class="letter">
+
+        <h2>
+          Meu amor,
+        </h2>
+
+        <p>
+          Hoje você completa 18 anos, e eu queria que esse dia
+          tivesse um pedacinho da nossa história.
+          Por isso fiz tudo isso.
+        </p>
+
+        <p>
+          Olhar para essas fotos me faz perceber quantas coisas
+          já vivemos juntos. Algumas são lindas, outras são
+          completamente sem sentido, mas todas têm uma coisa
+          em comum: você estava comigo.
+        </p>
+
+        <p>
+          Espero que essa nova fase seja cheia de sonhos realizados,
+          conquistas, felicidade e momentos que façam você olhar
+          para trás e sentir orgulho da pessoa que se tornou.
+        </p>
+
+        <p>
+          E, se eu puder continuar fazendo parte de alguns desses
+          momentos, vou considerar isso um dos maiores presentes
+          que a vida poderia me dar.
+        </p>
+
+        <p>
+          <b>
+            Feliz 18 anos, Gabriel.
+          </b>
+          Que nunca falte motivo para sorrir.
+        </p>
+
+        <p class="signature">
+          Com todo meu amor. ❤️
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- FINAL -->
+  <section class="section end">
+
+    <div>
+
+      <div class="small">
+        fim da surpresa
+      </div>
+
+      <h2>
+        Eu te amo.
+      </h2>
+
+      <p>
+        Feliz 18 anos, meu amor. ❤️
+      </p>
+
+      <div class="endpics">
+
+        <img src="fotos/foto09.jpeg">
+
+        <img src="fotos/foto10.jpeg">
+
+        <img src="fotos/foto07.jpeg">
+
+        <img src="fotos/foto08.jpeg">
+
+      </div>
+
+      <button
+        class="btn"
+        onclick="scrollTo({top:0,behavior:'smooth'})"
+      >
+        ↻ VER DE NOVO
+      </button>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+<script>
+
+/* CRIAR ESTRELAS */
+
+for(let i=0;i<120;i++){
+
+  let s=document.createElement('i');
+
+  s.className='estrela';
+
+  s.style.left=Math.random()*100+'%';
+
+  s.style.top=Math.random()*100+'%';
+
+  s.style.animationDelay=Math.random()*3+'s';
+
+  document.querySelector('.stars').appendChild(s);
+
+}
+
+
+/* IR PARA UMA PARTE */
+
+function go(id){
+
+  document
+    .getElementById(id)
+    .scrollIntoView({
+      behavior:'smooth'
+    });
+
+}
+
+
+/* ABRIR A PORTA */
+
+document
+  .getElementById('open')
+  .onclick=()=>{
+
+    document
+      .getElementById('door')
+      .classList
+      .add('open');
+
+    setTimeout(()=>{
+
+      document
+        .getElementById('cover')
+        .classList
+        .add('out');
+
+      document
+        .getElementById('content')
+        .classList
+        .add('show');
+
+      document.body.style.overflowY='auto';
+
+    },1200);
+
+  };
+
+</script>
+
+</body>
+</html>
