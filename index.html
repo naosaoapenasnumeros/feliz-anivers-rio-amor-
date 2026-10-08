@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>18 anos do Gabi 💙</title>
+<title>Para o Gabi ❤️</title>
 
 <style>
 * {
@@ -30,11 +30,11 @@ body::before {
     content: "";
     position: fixed;
     inset: 0;
+    z-index: -2;
     background:
-        radial-gradient(circle at 20% 20%, #ff00cc33, transparent 30%),
-        radial-gradient(circle at 80% 30%, #00eaff33, transparent 30%),
-        radial-gradient(circle at 50% 80%, #7a00ff33, transparent 35%);
-    z-index: -1;
+        radial-gradient(circle at 20% 20%, #ff00cc55, transparent 30%),
+        radial-gradient(circle at 80% 25%, #00eaff55, transparent 30%),
+        radial-gradient(circle at 50% 80%, #7a00ff55, transparent 35%);
 }
 
 /* CAPA */
@@ -50,50 +50,55 @@ body::before {
 }
 
 .hero-content {
-    max-width: 700px;
+    max-width: 750px;
 }
 
-.hero .mini {
+.mini {
     color: #00eaff;
-    font-size: 15px;
-    letter-spacing: 4px;
+    font-size: 14px;
+    letter-spacing: 5px;
     text-transform: uppercase;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
+    text-shadow: 0 0 15px #00eaff;
 }
 
 .hero h1 {
-    font-size: clamp(55px, 15vw, 110px);
-    color: #fff;
+    font-size: clamp(65px, 18vw, 130px);
+    line-height: .9;
+    color: white;
     text-shadow:
         0 0 10px #ff00cc,
-        0 0 25px #ff00cc,
-        0 0 50px #00eaff;
+        0 0 30px #ff00cc,
+        0 0 60px #00eaff;
 }
 
 .hero h2 {
-    font-size: clamp(25px, 7vw, 50px);
-    margin-top: 5px;
+    margin-top: 15px;
+    font-size: clamp(30px, 8vw, 60px);
     color: #ff4ddd;
-    text-shadow: 0 0 15px #ff00cc;
+    text-shadow:
+        0 0 10px #ff00cc,
+        0 0 30px #ff00cc;
 }
 
 .hero p {
     margin-top: 25px;
     color: #ddd;
     font-size: 18px;
+    line-height: 1.7;
 }
 
 .botao {
     display: inline-block;
     margin-top: 30px;
-    padding: 15px 30px;
+    padding: 16px 30px;
     color: white;
     text-decoration: none;
     border: 2px solid #00eaff;
     border-radius: 50px;
     box-shadow:
-        0 0 10px #00eaff,
-        inset 0 0 10px #00eaff;
+        0 0 12px #00eaff,
+        inset 0 0 12px #00eaff;
     transition: .3s;
 }
 
@@ -105,9 +110,9 @@ body::before {
 /* SEÇÕES */
 
 section {
-    padding: 80px 20px;
     max-width: 1100px;
     margin: auto;
+    padding: 80px 20px;
 }
 
 .titulo {
@@ -116,8 +121,7 @@ section {
 }
 
 .titulo h2 {
-    font-size: 35px;
-    color: #fff;
+    font-size: clamp(30px, 7vw, 45px);
     text-shadow:
         0 0 10px #ff00cc,
         0 0 25px #ff00cc;
@@ -125,29 +129,31 @@ section {
 
 .titulo p {
     margin-top: 12px;
-    color: #bbb;
+    color: #aaa;
 }
 
-/* TEXTO */
+/* CARTA */
 
-.mensagem {
+.carta {
     max-width: 800px;
     margin: auto;
-    padding: 35px;
-    text-align: center;
-    background: #10051cbb;
+    padding: 40px 30px;
+    background: #10051dcc;
     border: 1px solid #ff00cc;
-    border-radius: 20px;
-    box-shadow: 0 0 25px #ff00cc55;
+    border-radius: 25px;
+    box-shadow:
+        0 0 20px #ff00cc55,
+        inset 0 0 30px #ff00cc11;
 }
 
-.mensagem p {
-    font-size: 18px;
-    line-height: 1.8;
+.carta p {
     color: #eee;
+    font-size: 18px;
+    line-height: 2;
+    text-align: center;
 }
 
-/* FOTOS */
+/* GALERIA */
 
 .galeria {
     display: grid;
@@ -156,28 +162,29 @@ section {
 }
 
 .foto {
-    position: relative;
+    height: 330px;
     overflow: hidden;
-    border-radius: 20px;
+    border-radius: 22px;
     border: 2px solid #ff00cc;
     box-shadow:
-        0 0 10px #ff00cc,
-        0 0 25px #ff00cc55;
+        0 0 12px #ff00cc,
+        0 0 30px #ff00cc44;
+    background: #10051d;
 }
 
 .foto img {
-    display: block;
     width: 100%;
-    height: 330px;
+    height: 100%;
     object-fit: cover;
-    transition: .5s;
+    display: block;
+    transition: transform .5s;
 }
 
 .foto:hover img {
     transform: scale(1.08);
 }
 
-/* DESTAQUE */
+/* FRASE */
 
 .destaque {
     text-align: center;
@@ -186,7 +193,6 @@ section {
 
 .destaque h2 {
     font-size: clamp(35px, 8vw, 65px);
-    color: #fff;
     text-shadow:
         0 0 10px #00eaff,
         0 0 30px #00eaff,
@@ -195,7 +201,7 @@ section {
 
 .destaque p {
     margin-top: 20px;
-    color: #ddd;
+    color: #ccc;
     font-size: 19px;
 }
 
@@ -203,13 +209,15 @@ section {
 
 .final {
     text-align: center;
-    padding: 90px 20px;
+    padding: 100px 20px;
 }
 
 .final h2 {
-    font-size: 40px;
     color: #ff4ddd;
-    text-shadow: 0 0 20px #ff00cc;
+    font-size: clamp(32px, 7vw, 55px);
+    text-shadow:
+        0 0 10px #ff00cc,
+        0 0 30px #ff00cc;
 }
 
 .final p {
@@ -219,18 +227,19 @@ section {
 }
 
 .coracao {
-    font-size: 60px;
-    margin-top: 25px;
+    font-size: 65px;
+    margin-top: 30px;
     animation: pulsar 1.5s infinite;
+    filter: drop-shadow(0 0 20px #ff00cc);
 }
 
 @keyframes pulsar {
-    0%, 100% {
+    0%,100% {
         transform: scale(1);
     }
 
     50% {
-        transform: scale(1.15);
+        transform: scale(1.18);
     }
 }
 
@@ -238,8 +247,8 @@ footer {
     text-align: center;
     padding: 25px;
     color: #777;
-    font-size: 13px;
     border-top: 1px solid #24102d;
+    font-size: 13px;
 }
 </style>
 </head>
@@ -250,59 +259,64 @@ footer {
 
 <div class="hero">
 
-<div class="hero-content">
+    <div class="hero-content">
 
-<div class="mini">
-Uma surpresa para alguém muito especial
-</div>
+        <div class="mini">
+            Uma surpresa para alguém muito especial
+        </div>
 
-<h1>GABI</h1>
+        <h1>GABI</h1>
 
-<h2>18 ANOS ✨</h2>
+        <h2>18 ANOS ✨</h2>
 
-<p>
-Hoje é o seu dia.  
-E eu preparei um cantinho especial só para você. ❤️
-</p>
+        <p>
+            Hoje é o seu dia.<br>
+            E eu preparei um cantinho especial só para você. ❤️
+        </p>
 
-<a href="#nossa-historia" class="botao">
-ENTRAR NA SURPRESA 💜
-</a>
+        <a href="#mensagem" class="botao">
+            ENTRAR NA SURPRESA 💜
+        </a>
 
-</div>
+    </div>
 
 </div>
 
 
 <!-- MENSAGEM -->
 
-<section id="nossa-historia">
+<section id="mensagem">
 
-<div class="titulo">
+    <div class="titulo">
 
-<h2>Para você, Gabi ❤️</h2>
+        <h2>Para você, meu amor ❤️</h2>
 
-<p>Um pequeno pedaço de tudo que você significa.</p>
+        <p>
+            Um pequeno pedaço de tudo que você significa para mim.
+        </p>
 
-</div>
+    </div>
 
-<div class="mensagem">
+    <div class="carta">
 
-<p>
-Hoje você completa 18 anos, e eu não poderia deixar essa data passar
-como se fosse apenas mais um aniversário.
+        <p>
+            Hoje você completa 18 anos, e eu não poderia deixar essa
+            data passar como se fosse apenas mais um aniversário.
 
-Quero que você saiba o quanto você é importante para mim,
-o quanto eu amo estar ao seu lado e o quanto sou feliz por
-poder compartilhar momentos da minha vida com você.
+            Quero que você saiba o quanto você é importante para mim,
+            o quanto eu amo estar ao seu lado e o quanto sou feliz
+            por poder compartilhar tantos momentos com você.
 
-Que essa nova fase seja cheia de sonhos realizados,
-momentos inesquecíveis, conquistas e muito amor.
+            Que essa nova fase seja cheia de sonhos realizados,
+            conquistas, felicidade, saúde e muito amor.
 
-Feliz aniversário, meu amor. ❤️
-</p>
+            Que venham muitos outros momentos, muitas histórias,
+            muitas risadas e muitos aniversários ao seu lado.
 
-</div>
+            Feliz aniversário, meu amor. ❤️
+        </p>
+
+    </div>
 
 </section>
 
@@ -311,53 +325,55 @@ Feliz aniversário, meu amor. ❤️
 
 <section>
 
-<div class="titulo">
+    <div class="titulo">
 
-<h2>Nossos momentos 📸</h2>
+        <h2>Nossos momentos 📸</h2>
 
-<p>Algumas memórias que eu nunca quero esquecer.</p>
+        <p>
+            Algumas memórias que tornam nossa história ainda mais especial.
+        </p>
 
-</div>
+    </div>
 
-<div class="galeria">
+    <div class="galeria">
 
-<div class="foto">
-<img
-src="3fb33d21-fadf-497d-94fd-03dae75690ff.jpeg"
-alt="Nossa foto">
-</div>
+        <div class="foto">
+            <img
+            src="https://raw.githubusercontent.com/naosaoapenasnumeros/dioni-motos-terraplanagem/main/3fb33d21-fadf-497d-94fd-03dae75690ff.jpeg"
+            alt="Foto especial">
+        </div>
 
-<div class="foto">
-<img
-src="IMG_4117.png"
-alt="Momento especial">
-</div>
+        <div class="foto">
+            <img
+            src="https://raw.githubusercontent.com/naosaoapenasnumeros/dioni-motos-terraplanagem/main/IMG_4117.png"
+            alt="Foto especial">
+        </div>
 
-<div class="foto">
-<img
-src="IMG_4138.jpeg"
-alt="Nós dois">
-</div>
+        <div class="foto">
+            <img
+            src="https://raw.githubusercontent.com/naosaoapenasnumeros/dioni-motos-terraplanagem/main/IMG_4138.jpeg"
+            alt="Foto especial">
+        </div>
 
-<div class="foto">
-<img
-src="IMG_4674.png"
-alt="Momento juntos">
-</div>
+        <div class="foto">
+            <img
+            src="https://raw.githubusercontent.com/naosaoapenasnumeros/dioni-motos-terraplanagem/main/IMG_4674.png"
+            alt="Foto especial">
+        </div>
 
-<div class="foto">
-<img
-src="IMG_4675.png"
-alt="Foto do Gabi">
-</div>
+        <div class="foto">
+            <img
+            src="https://raw.githubusercontent.com/naosaoapenasnumeros/dioni-motos-terraplanagem/main/IMG_4675.png"
+            alt="Foto especial">
+        </div>
 
-<div class="foto">
-<img
-src="d694a499-97f0-455a-bf3c-a2d0b08bc8d6.jpeg"
-alt="Memória especial">
-</div>
+        <div class="foto">
+            <img
+            src="https://raw.githubusercontent.com/naosaoapenasnumeros/dioni-motos-terraplanagem/main/d694a499-97f0-455a-bf3c-a2d0b08bc8d6.jpeg"
+            alt="Foto especial">
+        </div>
 
-</div>
+    </div>
 
 </section>
 
@@ -366,11 +382,13 @@ alt="Memória especial">
 
 <div class="destaque">
 
-<h2>Que venham muitos outros momentos. ✨</h2>
+    <h2>
+        Que venham muitos outros momentos. ✨
+    </h2>
 
-<p>
-18 anos é só o começo de uma história muito maior.
-</p>
+    <p>
+        18 anos é só o começo de uma história muito maior.
+    </p>
 
 </div>
 
@@ -379,23 +397,24 @@ alt="Memória especial">
 
 <div class="final">
 
-<h2>Feliz aniversário, meu amor! ❤️</h2>
+    <h2>
+        Feliz aniversário, meu amor! ❤️
+    </h2>
 
-<p>
-Eu te amo e espero estar ao seu lado em muitos
-outros aniversários.
-</p>
+    <p>
+        Eu te amo e espero estar ao seu lado em muitos outros aniversários.
+    </p>
 
-<div class="coracao">
-❤️
-</div>
+    <div class="coracao">
+        ❤️
+    </div>
 
 </div>
 
 
 <footer>
 
-Feito com muito amor para o Gabi ✨
+    Feito com muito amor para o Gabi ✨
 
 </footer>
 
