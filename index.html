@@ -3,320 +3,646 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Para o Gabi ❤️</title>
+<title>Para o meu Gabi ❤️</title>
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-html {
-    scroll-behavior: smooth;
+html{
+    scroll-behavior:smooth;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    background: #05000d;
-    color: white;
-    overflow-x: hidden;
+body{
+    background:#030005;
+    color:white;
+    font-family:'Poppins',sans-serif;
+    overflow-x:hidden;
 }
 
-/* FUNDO NEON */
+/* ================= FUNDO ================= */
 
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    z-index: -2;
+body::before{
+    content:"";
+    position:fixed;
+    inset:-50%;
     background:
-        radial-gradient(circle at 20% 20%, #ff00cc55, transparent 30%),
-        radial-gradient(circle at 80% 25%, #00eaff55, transparent 30%),
-        radial-gradient(circle at 50% 80%, #7a00ff55, transparent 35%);
+        radial-gradient(circle at 30% 30%,rgba(255,0,128,.18),transparent 25%),
+        radial-gradient(circle at 70% 60%,rgba(120,0,255,.18),transparent 30%),
+        radial-gradient(circle at 50% 100%,rgba(255,20,147,.12),transparent 25%);
+    animation:backgroundMove 12s ease-in-out infinite alternate;
+    z-index:-3;
 }
 
-/* CAPA */
-
-.hero {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 30px 20px;
-    position: relative;
+@keyframes backgroundMove{
+    from{transform:rotate(0deg) scale(1);}
+    to{transform:rotate(8deg) scale(1.15);}
 }
 
-.hero-content {
-    max-width: 750px;
+/* ================= PARTÍCULAS ================= */
+
+.particles{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:100;
 }
 
-.mini {
-    color: #00eaff;
-    font-size: 14px;
-    letter-spacing: 5px;
-    text-transform: uppercase;
-    margin-bottom: 25px;
-    text-shadow: 0 0 15px #00eaff;
+.particle{
+    position:absolute;
+    color:#ff6fcf;
+    font-size:12px;
+    animation:floatParticle linear infinite;
+    opacity:.7;
+    text-shadow:0 0 15px #ff1493;
 }
 
-.hero h1 {
-    font-size: clamp(65px, 18vw, 130px);
-    line-height: .9;
-    color: white;
-    text-shadow:
-        0 0 10px #ff00cc,
-        0 0 30px #ff00cc,
-        0 0 60px #00eaff;
-}
-
-.hero h2 {
-    margin-top: 15px;
-    font-size: clamp(30px, 8vw, 60px);
-    color: #ff4ddd;
-    text-shadow:
-        0 0 10px #ff00cc,
-        0 0 30px #ff00cc;
-}
-
-.hero p {
-    margin-top: 25px;
-    color: #ddd;
-    font-size: 18px;
-    line-height: 1.7;
-}
-
-.botao {
-    display: inline-block;
-    margin-top: 30px;
-    padding: 16px 30px;
-    color: white;
-    text-decoration: none;
-    border: 2px solid #00eaff;
-    border-radius: 50px;
-    box-shadow:
-        0 0 12px #00eaff,
-        inset 0 0 12px #00eaff;
-    transition: .3s;
-}
-
-.botao:hover {
-    background: #00eaff;
-    color: #05000d;
-}
-
-/* SEÇÕES */
-
-section {
-    max-width: 1100px;
-    margin: auto;
-    padding: 80px 20px;
-}
-
-.titulo {
-    text-align: center;
-    margin-bottom: 45px;
-}
-
-.titulo h2 {
-    font-size: clamp(30px, 7vw, 45px);
-    text-shadow:
-        0 0 10px #ff00cc,
-        0 0 25px #ff00cc;
-}
-
-.titulo p {
-    margin-top: 12px;
-    color: #aaa;
-}
-
-/* CARTA */
-
-.carta {
-    max-width: 800px;
-    margin: auto;
-    padding: 40px 30px;
-    background: #10051dcc;
-    border: 1px solid #ff00cc;
-    border-radius: 25px;
-    box-shadow:
-        0 0 20px #ff00cc55,
-        inset 0 0 30px #ff00cc11;
-}
-
-.carta p {
-    color: #eee;
-    font-size: 18px;
-    line-height: 2;
-    text-align: center;
-}
-
-/* GALERIA */
-
-.galeria {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 20px;
-}
-
-.foto {
-    height: 330px;
-    overflow: hidden;
-    border-radius: 22px;
-    border: 2px solid #ff00cc;
-    box-shadow:
-        0 0 12px #ff00cc,
-        0 0 30px #ff00cc44;
-    background: #10051d;
-}
-
-.foto img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform .5s;
-}
-
-.foto:hover img {
-    transform: scale(1.08);
-}
-
-/* FRASE */
-
-.destaque {
-    text-align: center;
-    padding: 100px 20px;
-}
-
-.destaque h2 {
-    font-size: clamp(35px, 8vw, 65px);
-    text-shadow:
-        0 0 10px #00eaff,
-        0 0 30px #00eaff,
-        0 0 60px #ff00cc;
-}
-
-.destaque p {
-    margin-top: 20px;
-    color: #ccc;
-    font-size: 19px;
-}
-
-/* FINAL */
-
-.final {
-    text-align: center;
-    padding: 100px 20px;
-}
-
-.final h2 {
-    color: #ff4ddd;
-    font-size: clamp(32px, 7vw, 55px);
-    text-shadow:
-        0 0 10px #ff00cc,
-        0 0 30px #ff00cc;
-}
-
-.final p {
-    margin-top: 20px;
-    color: #ccc;
-    font-size: 18px;
-}
-
-.coracao {
-    font-size: 65px;
-    margin-top: 30px;
-    animation: pulsar 1.5s infinite;
-    filter: drop-shadow(0 0 20px #ff00cc);
-}
-
-@keyframes pulsar {
-    0%,100% {
-        transform: scale(1);
+@keyframes floatParticle{
+    0%{
+        transform:translateY(110vh) translateX(0) rotate(0deg);
+        opacity:0;
     }
-
-    50% {
-        transform: scale(1.18);
+    15%{opacity:.8;}
+    85%{opacity:.8;}
+    100%{
+        transform:translateY(-20vh) translateX(100px) rotate(360deg);
+        opacity:0;
     }
 }
 
-footer {
-    text-align: center;
-    padding: 25px;
-    color: #777;
-    border-top: 1px solid #24102d;
-    font-size: 13px;
+/* ================= PORTA ================= */
+
+#opening{
+    height:100vh;
+    min-height:650px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    perspective:1800px;
+    position:relative;
+    overflow:hidden;
+}
+
+.room{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:
+        radial-gradient(circle at center,rgba(255,0,130,.12),transparent 35%),
+        linear-gradient(180deg,#09000d,#020003);
+}
+
+.floor{
+    position:absolute;
+    bottom:-20%;
+    left:-20%;
+    width:140%;
+    height:45%;
+    transform:perspective(700px) rotateX(62deg);
+    background:
+        linear-gradient(rgba(255,0,150,.12) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,0,150,.12) 1px,transparent 1px);
+    background-size:70px 70px;
+    opacity:.5;
+}
+
+.doorScene{
+    position:relative;
+    width:300px;
+    height:470px;
+    transform-style:preserve-3d;
+}
+
+.doorGlow{
+    position:absolute;
+    inset:-50px;
+    background:#ff008c;
+    filter:blur(80px);
+    opacity:.25;
+    border-radius:50%;
+}
+
+.doorFrame{
+    position:absolute;
+    inset:0;
+    border:7px solid #ff4fbd;
+    border-radius:15px 15px 5px 5px;
+    box-shadow:
+        0 0 15px #ff1493,
+        0 0 40px #ff1493,
+        0 0 90px rgba(255,0,140,.5);
+    background:#070007;
+}
+
+.door{
+    position:absolute;
+    inset:7px;
+    transform-origin:left center;
+    transform-style:preserve-3d;
+    transition:transform 2s cubic-bezier(.77,0,.18,1);
+    cursor:pointer;
+    background:
+        linear-gradient(90deg,rgba(255,255,255,.04),transparent),
+        linear-gradient(145deg,#190016,#050005);
+    border-radius:8px;
+    box-shadow:
+        inset 0 0 40px rgba(255,0,150,.2),
+        inset -10px 0 20px rgba(0,0,0,.7);
+}
+
+.door.open{
+    transform:rotateY(-112deg);
+}
+
+.doorPanel{
+    position:absolute;
+    border:2px solid rgba(255,80,190,.4);
+    border-radius:8px;
+    box-shadow:inset 0 0 20px rgba(255,0,150,.08);
+}
+
+.panel1{
+    left:25px;
+    right:25px;
+    top:25px;
+    height:185px;
+}
+
+.panel2{
+    left:25px;
+    right:25px;
+    bottom:25px;
+    height:185px;
+}
+
+.number18{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    font-family:'Cormorant Garamond',serif;
+    font-size:100px;
+    font-weight:700;
+    color:#fff;
+    text-shadow:
+        0 0 10px #fff,
+        0 0 25px #ff1493,
+        0 0 60px #ff1493;
+}
+
+.knob{
+    position:absolute;
+    right:28px;
+    top:52%;
+    width:17px;
+    height:17px;
+    border-radius:50%;
+    background:#ffd6f1;
+    box-shadow:0 0 10px #fff,0 0 25px #ff1493;
+}
+
+.doorText{
+    position:absolute;
+    width:100%;
+    bottom:-115px;
+    text-align:center;
+}
+
+.doorText h1{
+    font-family:'Cormorant Garamond',serif;
+    font-size:34px;
+    font-weight:500;
+    letter-spacing:3px;
+}
+
+.doorText p{
+    margin-top:8px;
+    color:#d9a9cb;
+    font-size:13px;
+}
+
+.openButton{
+    margin-top:25px;
+    padding:14px 28px;
+    border:1px solid #ff55bd;
+    border-radius:50px;
+    background:rgba(255,0,140,.1);
+    color:white;
+    cursor:pointer;
+    box-shadow:0 0 20px rgba(255,0,140,.35);
+    transition:.3s;
+}
+
+.openButton:hover{
+    background:#ff1493;
+    transform:scale(1.06);
+    box-shadow:0 0 35px #ff1493;
+}
+
+/* ================= CONTEÚDO ================= */
+
+#content{
+    display:none;
+}
+
+#content.show{
+    display:block;
+    animation:reveal 2s ease;
+}
+
+@keyframes reveal{
+    from{opacity:0;transform:translateY(50px);}
+    to{opacity:1;transform:translateY(0);}
+}
+
+section{
+    min-height:100vh;
+    padding:110px 20px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    position:relative;
+}
+
+.tag{
+    color:#ff63c4;
+    letter-spacing:4px;
+    font-size:11px;
+    text-transform:uppercase;
+    margin-bottom:18px;
+}
+
+h2{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(45px,9vw,90px);
+    line-height:.95;
+    font-weight:500;
+    text-shadow:0 0 30px rgba(255,20,147,.4);
+}
+
+.subtitle{
+    max-width:650px;
+    margin:25px auto;
+    color:#d8c2d5;
+    line-height:2;
+    font-size:15px;
+}
+
+/* ================= 18 ================= */
+
+.age{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(150px,35vw,320px);
+    line-height:.7;
+    color:transparent;
+    -webkit-text-stroke:1px #ff72ca;
+    text-shadow:
+        0 0 20px #ff1493,
+        0 0 70px rgba(255,20,147,.5);
+    animation:pulse18 3s ease-in-out infinite;
+}
+
+@keyframes pulse18{
+    50%{
+        text-shadow:
+        0 0 40px #ff1493,
+        0 0 110px rgba(255,20,147,.7);
+    }
+}
+
+/* ================= CARTA ================= */
+
+.letter{
+    max-width:750px;
+    padding:50px 35px;
+    border:1px solid rgba(255,80,190,.25);
+    border-radius:25px;
+    background:linear-gradient(145deg,rgba(255,255,255,.06),rgba(255,0,150,.03));
+    backdrop-filter:blur(15px);
+    box-shadow:
+        0 30px 100px rgba(0,0,0,.5),
+        inset 0 0 40px rgba(255,0,150,.04);
+}
+
+.letter p{
+    font-family:'Cormorant Garamond',serif;
+    font-size:25px;
+    line-height:1.65;
+    color:#f5e9f2;
+}
+
+.signature{
+    margin-top:30px;
+    color:#ff72ca;
+    font-family:'Cormorant Garamond',serif;
+    font-size:28px;
+}
+
+/* ================= GALERIA 3D ================= */
+
+.gallery{
+    width:min(1000px,95vw);
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+    margin-top:60px;
+    perspective:1500px;
+}
+
+.photo{
+    position:relative;
+    aspect-ratio:3/4;
+    border-radius:18px;
+    overflow:hidden;
+    border:1px solid rgba(255,100,200,.35);
+    transform-style:preserve-3d;
+    transition:.7s cubic-bezier(.2,.8,.2,1);
+    box-shadow:
+        0 20px 50px rgba(0,0,0,.6),
+        0 0 25px rgba(255,0,150,.12);
+}
+
+.photo:hover{
+    transform:rotateY(8deg) rotateX(-5deg) translateY(-12px) scale(1.04);
+    box-shadow:
+        0 30px 70px rgba(0,0,0,.7),
+        0 0 50px rgba(255,0,150,.3);
+}
+
+.photo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:1s;
+}
+
+.photo:hover img{
+    transform:scale(1.08);
+}
+
+.photo::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(180deg,transparent 50%,rgba(0,0,0,.45));
+    pointer-events:none;
+}
+
+/* ================= FRASES ================= */
+
+.quote{
+    min-height:auto;
+    padding:140px 20px;
+}
+
+.quoteText{
+    max-width:850px;
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(32px,6vw,65px);
+    line-height:1.25;
+    color:#fff;
+    text-shadow:0 0 30px rgba(255,20,147,.35);
+}
+
+.quoteText span{
+    color:#ff6fc9;
+}
+
+/* ================= FINAL ================= */
+
+.final{
+    min-height:100vh;
+    background:
+        radial-gradient(circle at center,rgba(255,0,140,.15),transparent 45%);
+}
+
+.heart{
+    font-size:90px;
+    animation:heartBeat 1.5s infinite;
+    filter:drop-shadow(0 0 25px #ff1493);
+}
+
+@keyframes heartBeat{
+    0%,100%{transform:scale(1);}
+    50%{transform:scale(1.15);}
+}
+
+.final h2{
+    margin-top:20px;
+}
+
+.final p{
+    max-width:650px;
+    color:#d9bfd2;
+    line-height:2;
+    margin-top:25px;
+}
+
+.love{
+    margin-top:45px;
+    font-family:'Cormorant Garamond',serif;
+    font-size:32px;
+    color:#ff72ca;
+}
+
+/* ================= RESPONSIVO ================= */
+
+@media(max-width:700px){
+
+    .doorScene{
+        width:240px;
+        height:390px;
+    }
+
+    .number18{
+        font-size:80px;
+    }
+
+    .gallery{
+        grid-template-columns:repeat(2,1fr);
+        gap:12px;
+    }
+
+    .letter{
+        padding:35px 22px;
+    }
+
+    .letter p{
+        font-size:22px;
+    }
+}
+
+@media(max-width:450px){
+
+    .gallery{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .doorText h1{
+        font-size:27px;
+    }
+
+    section{
+        padding:90px 18px;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<!-- CAPA -->
+<!-- PARTÍCULAS -->
+<div class="particles" id="particles"></div>
 
-<div class="hero">
+<!-- ================= PORTA ================= -->
 
-    <div class="hero-content">
+<section id="opening">
 
-        <div class="mini">
-            Uma surpresa para alguém muito especial
+    <div class="room"></div>
+    <div class="floor"></div>
+
+    <div class="doorScene">
+
+        <div class="doorGlow"></div>
+
+        <div class="doorFrame"></div>
+
+        <div class="door" id="door">
+
+            <div class="doorPanel panel1"></div>
+            <div class="doorPanel panel2"></div>
+
+            <div class="number18">18</div>
+
+            <div class="knob"></div>
+
         </div>
 
-        <h1>GABI</h1>
+        <div class="doorText">
 
-        <h2>18 ANOS ✨</h2>
+            <h1>Gabi, tenho uma surpresa...</h1>
 
-        <p>
-            Hoje é o seu dia.<br>
-            E eu preparei um cantinho especial só para você. ❤️
-        </p>
+            <p>
+                Algumas coisas só podem ser sentidas.
+            </p>
 
-        <a href="#mensagem" class="botao">
-            ENTRAR NA SURPRESA 💜
-        </a>
+            <button class="openButton" onclick="openDoor()">
+                ABRIR A SURPRESA ❤️
+            </button>
 
-    </div>
-
-</div>
-
-
-<!-- MENSAGEM -->
-
-<section id="mensagem">
-
-    <div class="titulo">
-
-        <h2>Para você, meu amor ❤️</h2>
-
-        <p>
-            Um pequeno pedaço de tudo que você significa para mim.
-        </p>
+        </div>
 
     </div>
 
-    <div class="carta">
+</section>
+
+
+<!-- ================= CONTEÚDO ================= -->
+
+<main id="content">
+
+<!-- INTRO -->
+
+<section>
+
+    <div class="tag">Hoje começa um novo capítulo</div>
+
+    <div class="age">18</div>
+
+    <h2>anos de você. ❤️</h2>
+
+    <p class="subtitle">
+        E eu espero que você saiba o quanto é bonito poder
+        estar presente para ver você chegar até aqui.
+    </p>
+
+</section>
+
+
+<!-- DECLARAÇÃO -->
+
+<section>
+
+    <div class="tag">Para o menino que eu amo</div>
+
+    <h2>Meu amor...</h2>
+
+    <div class="letter">
 
         <p>
-            Hoje você completa 18 anos, e eu não poderia deixar essa
-            data passar como se fosse apenas mais um aniversário.
+            Hoje você completa 18 anos.
+            E enquanto todo mundo comemora mais um ano da sua vida,
+            eu comemoro a sorte de ter encontrado você.
+            <br><br>
 
-            Quero que você saiba o quanto você é importante para mim,
-            o quanto eu amo estar ao seu lado e o quanto sou feliz
-            por poder compartilhar tantos momentos com você.
+            De todas as coisas bonitas que poderiam ter acontecido
+            comigo, conhecer você foi uma das minhas favoritas.
+            <br><br>
 
-            Que essa nova fase seja cheia de sonhos realizados,
-            conquistas, felicidade, saúde e muito amor.
-
-            Que venham muitos outros momentos, muitas histórias,
-            muitas risadas e muitos aniversários ao seu lado.
-
-            Feliz aniversário, meu amor. ❤️
+            Você chegou e, sem perceber,
+            deixou meus dias mais bonitos,
+            meus sorrisos mais sinceros
+            e meu coração com um lugar que só pertence a você.
         </p>
 
+        <div class="signature">
+            Com todo o meu amor. ❤️
+        </div>
+
     </div>
+
+</section>
+
+
+<!-- FRASE -->
+
+<section class="quote">
+
+    <div class="quoteText">
+
+        “Se eu pudesse escolher uma pessoa
+        para viver todos os meus momentos
+        mais bonitos novamente...
+
+        <br><br>
+
+        <span>
+        eu escolheria você em todos eles.
+        </span>”
+
+    </div>
+
+</section>
+
+
+<!-- 18 -->
+
+<section>
+
+    <div class="tag">E agora começa...</div>
+
+    <h2>Os seus 18 anos. ✨</h2>
+
+    <p class="subtitle">
+
+        Uma nova fase.
+        Novos sonhos.
+        Novas histórias.
+        Novos caminhos.
+
+        <br><br>
+
+        E eu só desejo que você nunca deixe de ser
+        essa pessoa incrível que eu tenho tanto orgulho de amar.
+
+    </p>
 
 </section>
 
@@ -325,52 +651,55 @@ footer {
 
 <section>
 
-    <div class="titulo">
+    <div class="tag">Alguns dos meus momentos favoritos</div>
 
-        <h2>Nossos momentos 📸</h2>
+    <h2>Nós. ❤️</h2>
 
-        <p>
-            Algumas memórias que tornam nossa história ainda mais especial.
-        </p>
+    <p class="subtitle">
+        Porque algumas fotos não guardam apenas imagens.
+        Guardam sentimentos que eu nunca quero esquecer.
+    </p>
 
-    </div>
+    <div class="gallery">
 
-    <div class="galeria">
-
-        <div class="foto">
-            <img
-            src="https://raw.githubusercontent.com/naosaoapenasnumeros/dioni-motos-terraplanagem/main/3fb33d21-fadf-497d-94fd-03dae75690ff.jpeg"
-            alt="Foto especial">
+        <div class="photo">
+            <img src="1000061706.webp">
         </div>
 
-        <div class="foto">
-            <img
-            src="https://raw.githubusercontent.com/naosaoapenasnumeros/dioni-motos-terraplanagem/main/IMG_4117.png"
-            alt="Foto especial">
+        <div class="photo">
+            <img src="1000159430.png">
         </div>
 
-        <div class="foto">
-            <img
-            src="https://raw.githubusercontent.com/naosaoapenasnumeros/dioni-motos-terraplanagem/main/IMG_4138.jpeg"
-            alt="Foto especial">
+        <div class="photo">
+            <img src="1000160688.jpeg">
         </div>
 
-        <div class="foto">
-            <img
-            src="https://raw.githubusercontent.com/naosaoapenasnumeros/dioni-motos-terraplanagem/main/IMG_4674.png"
-            alt="Foto especial">
+        <div class="photo">
+            <img src="1000163261.jpeg">
         </div>
 
-        <div class="foto">
-            <img
-            src="https://raw.githubusercontent.com/naosaoapenasnumeros/dioni-motos-terraplanagem/main/IMG_4675.png"
-            alt="Foto especial">
+        <div class="photo">
+            <img src="1000175844.webp">
         </div>
 
-        <div class="foto">
-            <img
-            src="https://raw.githubusercontent.com/naosaoapenasnumeros/dioni-motos-terraplanagem/main/d694a499-97f0-455a-bf3c-a2d0b08bc8d6.jpeg"
-            alt="Foto especial">
+        <div class="photo">
+            <img src="2C7AA74A-CDC3-420C-BAEE-2EBF1EE89E49.jpeg">
+        </div>
+
+        <div class="photo">
+            <img src="IMG_0765.jpeg">
+        </div>
+
+        <div class="photo">
+            <img src="IMG_7946.jpeg">
+        </div>
+
+        <div class="photo">
+            <img src="IMG_8703.jpeg">
+        </div>
+
+        <div class="photo">
+            <img src="bcfb05da-66e2-468c-997e-338e35faabdc.jpeg">
         </div>
 
     </div>
@@ -378,45 +707,154 @@ footer {
 </section>
 
 
-<!-- DESTAQUE -->
+<!-- OUTRA FRASE -->
 
-<div class="destaque">
+<section class="quote">
 
-    <h2>
-        Que venham muitos outros momentos. ✨
-    </h2>
+    <div class="quoteText">
 
-    <p>
-        18 anos é só o começo de uma história muito maior.
-    </p>
+        “Que seus 18 anos sejam apenas o começo
+        de tudo aquilo que você ainda vai conquistar.
 
-</div>
+        <br><br>
 
+        E que entre tantos caminhos,
+        <span>o nosso continue se encontrando.</span>”
 
-<!-- FINAL -->
-
-<div class="final">
-
-    <h2>
-        Feliz aniversário, meu amor! ❤️
-    </h2>
-
-    <p>
-        Eu te amo e espero estar ao seu lado em muitos outros aniversários.
-    </p>
-
-    <div class="coracao">
-        ❤️
     </div>
 
-</div>
+</section>
 
 
-<footer>
+<!-- DECLARAÇÃO FINAL -->
 
-    Feito com muito amor para o Gabi ✨
+<section class="final">
 
-</footer>
+    <div class="heart">❤️</div>
+
+    <h2>Feliz 18 anos,<br>meu amor.</h2>
+
+    <p>
+
+        Que você tenha coragem para perseguir seus sonhos,
+        força para enfrentar os dias difíceis,
+        motivos infinitos para sorrir
+        e pessoas que te amem de verdade ao seu lado.
+
+        <br><br>
+
+        Eu espero poder estar aqui para comemorar
+        não apenas os seus 18,
+        mas muitos outros aniversários,
+        conquistas, sonhos e capítulos da nossa história.
+
+    </p>
+
+    <div class="love">
+        Eu te amo. Hoje, amanhã e em todos os capítulos que vierem. ❤️
+    </div>
+
+</section>
+
+</main>
+
+
+<script>
+
+/* ================= ABRIR PORTA ================= */
+
+function openDoor(){
+
+    const door = document.getElementById("door");
+    const opening = document.getElementById("opening");
+    const content = document.getElementById("content");
+
+    door.classList.add("open");
+
+    setTimeout(()=>{
+
+        opening.style.transition="2s";
+        opening.style.opacity="0";
+        opening.style.transform="scale(1.08)";
+
+    },900);
+
+    setTimeout(()=>{
+
+        opening.style.display="none";
+        content.classList.add("show");
+
+        window.scrollTo({
+            top:0,
+            behavior:"instant"
+        });
+
+    },2000);
+}
+
+
+/* ================= PARTÍCULAS ================= */
+
+const particleBox = document.getElementById("particles");
+
+const symbols=["♡","♥","✦","✧","·"];
+
+for(let i=0;i<45;i++){
+
+    const particle=document.createElement("div");
+
+    particle.className="particle";
+
+    particle.innerText=
+        symbols[Math.floor(Math.random()*symbols.length)];
+
+    particle.style.left=Math.random()*100+"%";
+
+    particle.style.animationDuration=
+        (7+Math.random()*10)+"s";
+
+    particle.style.animationDelay=
+        (-Math.random()*15)+"s";
+
+    particle.style.fontSize=
+        (8+Math.random()*14)+"px";
+
+    particleBox.appendChild(particle);
+}
+
+
+/* ================= EFEITO 3D NAS FOTOS ================= */
+
+document.querySelectorAll(".photo").forEach(photo=>{
+
+    photo.addEventListener("mousemove",(e)=>{
+
+        const rect=photo.getBoundingClientRect();
+
+        const x=e.clientX-rect.left;
+        const y=e.clientY-rect.top;
+
+        const rotateY=(x/rect.width-.5)*14;
+        const rotateX=(y/rect.height-.5)*-14;
+
+        photo.style.transform=
+            `perspective(900px)
+             rotateX(${rotateX}deg)
+             rotateY(${rotateY}deg)
+             translateY(-10px)
+             scale(1.04)`;
+
+    });
+
+    photo.addEventListener("mouseleave",()=>{
+
+        photo.style.transform="";
+
+    });
+
+});
+
+</script>
 
 </body>
 </html>
